@@ -12,3 +12,5 @@ class Slacknotification extends Controller
         Notification::route('slack', env('LOG_SLACK_WEBHOOK_URL'))->notify($noti);
     }
 }
+
+

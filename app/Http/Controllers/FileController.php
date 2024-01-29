@@ -70,8 +70,6 @@ class FileController extends Controller
 
     }
 
-
-
     public function show($file_path){
         $user = auth()->guard('api:jwt')->user();
         $userId = $user->id;
@@ -195,7 +193,6 @@ class FileController extends Controller
         return view('user_files.index', ['fileUrls' => $fileUrls, 'fileNames' => $fileNames]);
     }
 
-
     public function showSanctum(Request $request,$file_path){
         $user = $request->user();
         $userId = $user->id;
@@ -219,12 +216,10 @@ class FileController extends Controller
                 'msg' => 'No files found'
             ], 404);
         }
+
         Log::channel('slack')->info('FileConsulted', [$fileUrl]);
         $UserController = new UserController();
         $UserController->SlackNotification('El usuario: '.$user->nombre.', a solicitado ver un archivo via JWT.');
         return view('user_files.show', ['fileUrls' => $fileUrl, 'fileNames' => $userFile->file_path]);
-
     }
-
-
 }
