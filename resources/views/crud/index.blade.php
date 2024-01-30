@@ -31,11 +31,6 @@
     </head>
     <body>
     <div class="container mt-5">
-        @if($users->isEmpty())
-            <div class="alert alert-danger" role="alert">
-                No hay usuarios registrados
-            </div>
-        @else
             <table class="table">
                 <thead>
                 <tr>
@@ -43,7 +38,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Verificado</th>
+                    <!--<th scope="col">Verificado</th>-->
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -55,19 +50,17 @@
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->apellido}}</td>
                         <td>{{$user->email}}</td>
-                        @if($user->esta_activo == 1)
+                        <!--@if($user->esta_activo == 1)
                             <td>True</td>
                         @else
                             <td>False</td>
-                        @endif
+                        @endif-->
                         <td><a href="/form/update/{{$user->id}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
                         <td><a href="/form/delete/{{$user->id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-        @endif
-
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

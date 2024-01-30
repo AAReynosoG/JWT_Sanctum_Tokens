@@ -20,12 +20,8 @@ Route::get('/', function () {
 
 Route::post('/register', [CrudController::class, 'store'])->name('store');
 Route::get('/index', [CrudController::class, 'index'])->name('index');
-Route::put('/update/{userId}', [CrudController::class, 'update'])->name('update');
-Route::delete('/delete/{userId}', [CrudController::class, 'delete'])->name('delete');
-
-
-
-
+Route::put('/update/{userId}', [CrudController::class, 'update'])->name('update')->where('userId', '[0-9]+');
+Route::delete('/delete/{userId}', [CrudController::class, 'delete'])->name('delete')->where('userId', '[0-9]+');
 
 
 
@@ -38,8 +34,8 @@ Route::get('/form/index', function () {
 })->name('index.view');
 
 Route::get('/form/update/{userId}', [CrudController::class, 'updateView'])
-    ->name('update.view');
+    ->name('update.view')->where('userId', '[0-9]+');
 
 Route::get('/form/delete/{userId}', [CrudController::class, 'deleteView'])
-    ->name('delete.view');
+    ->name('delete.view')->where('userId', '[0-9]+');
 
